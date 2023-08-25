@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
   
+      if (!(await isValidWord(playerWord))) {
+        alert("Invalid word. Please enter a valid word.");
+        return;
+      }
+  
       const wordPair = document.createElement("div");
       wordPair.classList.add("word-pair");
   
@@ -37,6 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
       await performComputerTurn();
     });
+  
+    async function isValidWord(word) {
+      const response = await fetch(`https://api.datamuse.com/words?sp=${word}`);
+      const data = await response.json();
+      return data.length > 0 && data[0].word === word;
+    }
   
     async function performComputerTurn() {
       const computerWord = await getComputerWord(lastLetter);
@@ -55,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     async function getComputerWord(startingLetter) {
       const response = await fetch(`https://api.datamuse.com/words?sp=${startingLetter}*`);
       const data = await response.json();
-  
       const validWords = data.filter(word => !playedWordSet.has(word.word));
       const randomIndex = Math.floor(Math.random() * validWords.length);
       return validWords[randomIndex].word;
@@ -65,9 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const wordBox = document.createElement("div");
       wordBox.classList.add("word-box");
       wordBox.classList.add(player);
-  
       wordBox.textContent = word;
-  
       return wordBox;
     }
   });
