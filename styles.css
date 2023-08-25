@@ -1,0 +1,59 @@
+/* Add your custom styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  #wordInput {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  #playButton {
+    padding: 5px 10px;
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+/* Add these styles to your styles.css */
+
+.word-pair {
+    display: flex;
+  }
+  
+/* Add these styles to your styles.css */
+
+/* Add these styles to your styles.css */
+
+#playedWords {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .word-box {
+    padding: 10px;
+    border: 1px solid black;
+    background-color: hotpink;
+    color: white;
+    margin: 5px;
+  }
+  
